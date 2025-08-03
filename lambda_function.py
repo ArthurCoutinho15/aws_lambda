@@ -10,7 +10,7 @@ s3 =  boto3.client('s3')
 def lambda_handler(event, context):
     record = event['Records'][0]
     bucket = record['s3']['bucket']['name']
-    key = record['s3']['bucket']['key']
+    key = record['s3']['object']['key']
     
     response = s3.head_object(Bucket=bucket, Key=key)  
     content_length = response['ContentLength']   
